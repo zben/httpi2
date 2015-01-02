@@ -1,28 +1,28 @@
-# HTTPI
+# HTTPI2
 
 A common interface for Ruby's HTTP libraries.
 
-[Documentation](http://httpirb.com) | [RDoc](http://rubydoc.info/gems/httpi) |
-[Mailing list](https://groups.google.com/forum/#!forum/httpirb)
+[Documentation](http://httpi2rb.com) | [RDoc](http://rubydoc.info/gems/httpi2) |
+[Mailing list](https://groups.google.com/forum/#!forum/httpi2rb)
 
-[![Build Status](https://secure.travis-ci.org/savonrb/httpi.png?branch=master)](http://travis-ci.org/savonrb/httpi)
-[![Gem Version](https://badge.fury.io/rb/httpi.png)](http://badge.fury.io/rb/httpi)
-[![Code Climate](https://codeclimate.com/github/savonrb/httpi.png)](https://codeclimate.com/github/savonrb/httpi)
-[![Coverage Status](https://coveralls.io/repos/savonrb/httpi/badge.png?branch=master)](https://coveralls.io/r/savonrb/httpi)
+[![Build Status](https://secure.travis-ci.org/savonrb/httpi2.png?branch=master)](http://travis-ci.org/savonrb/httpi2)
+[![Gem Version](https://badge.fury.io/rb/httpi2.png)](http://badge.fury.io/rb/httpi2)
+[![Code Climate](https://codeclimate.com/github/savonrb/httpi2.png)](https://codeclimate.com/github/savonrb/httpi2)
+[![Coverage Status](https://coveralls.io/repos/savonrb/httpi2/badge.png?branch=master)](https://coveralls.io/r/savonrb/httpi2)
 
 
 ## Installation
 
-HTTPI is available through [Rubygems](http://rubygems.org/gems/httpi) and can be installed via:
+HTTPI2 is available through [Rubygems](http://rubygems.org/gems/httpi2) and can be installed via:
 
 ```
-$ gem install httpi
+$ gem install httpi2
 ```
 
 or add it to your Gemfile like this:
 
 ```
-gem 'httpi', '~> 2.1.0'
+gem 'httpi2', '~> 2.1.0'
 ```
 
 
@@ -30,26 +30,26 @@ gem 'httpi', '~> 2.1.0'
 
 
 ``` ruby
-require "httpi"
+require "httpi2"
 
 # create a request object
-request = HTTPI::Request.new
+request = HTTPI2::Request.new
 request.url = "http://example.com"
 
 # and pass it to a request method
-HTTPI.get(request)
+HTTPI2.get(request)
 
 # use a specific adapter per request
-HTTPI.get(request, :curb)
+HTTPI2.get(request, :curb)
 
 # or specify a global adapter to use
-HTTPI.adapter = :httpclient
+HTTPI2.adapter = :httpclient
 
 # and execute arbitary requests
-HTTPI.request(:custom, request)
+HTTPI2.request(:custom, request)
 ```
 
 
 ## Documentation
 
-Continue reading at [httpirb.com](http://httpirb.com)
+Continue reading at [httpi2rb.com](http://httpi2rb.com)

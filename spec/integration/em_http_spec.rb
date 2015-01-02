@@ -1,7 +1,7 @@
 require "spec_helper"
 require "integration/support/server"
 
-describe HTTPI::Adapter::EmHttpRequest do
+describe HTTPI2::Adapter::EmHttpRequest do
 
   # em_http is not supported on ruby 1.8
   unless RUBY_VERSION =~ /1\.8/
@@ -27,56 +27,56 @@ describe HTTPI::Adapter::EmHttpRequest do
       end
 
       it "sends and receives HTTP headers" do
-        request = HTTPI::Request.new(@server.url + "x-header")
-        request.headers["X-Header"] = "HTTPI"
+        request = HTTPI2::Request.new(@server.url + "x-header")
+        request.headers["X-Header"] = "HTTPI2"
 
-        response = HTTPI.get(request, adapter)
-        expect(response.body).to include("HTTPI")
+        response = HTTPI2.get(request, adapter)
+        expect(response.body).to include("HTTPI2")
       end
 
       it "it supports headers with multiple values" do
-        request = HTTPI::Request.new(@server.url + "cookies")
+        request = HTTPI2::Request.new(@server.url + "cookies")
 
-        response = HTTPI.get(request, adapter)
+        response = HTTPI2.get(request, adapter)
         cookies = ["cookie1=chip1; path=/", "cookie2=chip2; path=/"]
         expect(response.headers["Set-Cookie"]).to eq(cookies)
       end
 
       it "executes GET requests" do
-        response = HTTPI.get(@server.url, adapter)
+        response = HTTPI2.get(@server.url, adapter)
         expect(response.body).to eq("get")
         expect(response.headers["Content-Type"]).to eq("text/plain")
       end
 
       it "executes POST requests" do
-        response = HTTPI.post(@server.url, "<some>xml</some>", adapter)
+        response = HTTPI2.post(@server.url, "<some>xml</some>", adapter)
         expect(response.body).to eq("post")
         expect(response.headers["Content-Type"]).to eq("text/plain")
       end
 
       it "executes HEAD requests" do
-        response = HTTPI.head(@server.url, adapter)
+        response = HTTPI2.head(@server.url, adapter)
         expect(response.code).to eq(200)
         expect(response.headers["Content-Type"]).to eq("text/plain")
       end
 
       it "executes PUT requests" do
-        response = HTTPI.put(@server.url, "<some>xml</some>", adapter)
+        response = HTTPI2.put(@server.url, "<some>xml</some>", adapter)
         expect(response.body).to eq("put")
         expect(response.headers["Content-Type"]).to eq("text/plain")
       end
 
       it "executes DELETE requests" do
-        response = HTTPI.delete(@server.url, adapter)
+        response = HTTPI2.delete(@server.url, adapter)
         expect(response.body).to eq("delete")
         expect(response.headers["Content-Type"]).to eq("text/plain")
       end
 
       it "supports basic authentication" do
-        request = HTTPI::Request.new(@server.url + "basic-auth")
+        request = HTTPI2::Request.new(@server.url + "basic-auth")
         request.auth.basic("admin", "secret")
 
-        response = HTTPI.get(request, adapter)
+        response = HTTPI2.get(request, adapter)
         expect(response.body).to eq("basic-auth")
       end
 

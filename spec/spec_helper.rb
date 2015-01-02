@@ -11,7 +11,7 @@ unless RUBY_PLATFORM =~ /java/
   end
 end
 
-require 'httpi'
+require 'httpi2'
 require 'rspec'
 
 RSpec.configure do |config|
@@ -19,7 +19,7 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
-HTTPI.log = false
+HTTPI2.log = false
 
 require 'support/fixture'
 require 'support/matchers'
